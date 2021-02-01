@@ -1,0 +1,40 @@
+{% extends "venues/layout.html" %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block body %}
+    <br>
+    <div class="flex-container">
+        <div id="homepage-content-left">
+            <h1 class="h1-head-main">Fyyur</h1>
+            <br>
+            <p class="text1">Where musical artists meet musical venues.</p>
+            <table>
+                <tr>
+                    <td class="td-home-btn"><input type="submit" class="btn-home" id="btn-find" name="findVenue" value="Find a venue" onclick="find('venue')"></input></td>
+                    <td class="td-home-btn"><input type="submit" class="btn-home" id="btn-post" name="postVenue" value="Post a venue" onclick="post('venue')"></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><input type="submit" class="btn-home" id="btn-find" name="findArtist" value="Find an artist" onclick="find('artist')"></td>
+                    <td class="td-home-btn"><input type="submit" class="btn-home" id="btn-post" name="postArtist" value="Post an artist" onclick="post('artist')"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><p class="text1">Publicize about your show for free.</p></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><input type="submit" class="btn-home" id="btn-find" name="findShow" value="Find a show" onclick="find('show')"></td>
+                    <td class="td-home-btn"><input type="submit" class="btn-home" id="btn-post" name="postShow" value="Post a show" onclick="post('show')"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="homepage-content-right">
+            <img id="homeimage" src="https://media.istockphoto.com/photos/cheering-crowd-of-unrecognized-people-at-a-rock-music-concert-concert-picture-id1189205501?s=612x612" alt="Home">
+        </div>
+    </div>
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'venues/index.js' %}"></script>
+{% endblock %}

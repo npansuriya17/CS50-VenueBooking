@@ -1,0 +1,134 @@
+{% extends "venues/layout.html" %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block body %}
+    <br>
+    <div class="flex-container">
+        <div class="post-form" id="post-venue">
+            <h2 class="">Post a Venue</h2>
+            <br>
+            <table>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Venue:</p></td>
+                    <td class="td-home-btn"><input type="text" class="post-input" id="venue-name" name="venue-name" /></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Address:</p></td>
+                    <td class="td-home-btn"><textarea class="post-textarea" id="address" name="address"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Website:</p></td>
+                    <td class="td-home-btn"><input type="text" class="post-input" id="website" name="website" /></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Contact No.:</p></td>
+                    <td class="td-home-btn"><input type="tel" class="post-input" id="telephone" name="telephone" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="post-form" id="post-artist">
+            <h2 class="">Post an Artist</h2>
+            <br>
+            <table>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Name:</p></td>
+                    <td class="td-home-btn"><input type="text" class="post-input" id="artist-name" name="artist-name" /></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Genre:</p></td>
+                    <td class="td-home-btn">
+                        <input type="checkbox" name="genre[]" id="genre1" />
+                        <label for="genre1">Genre 1</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Description:</p></td>
+                    <td class="td-home-btn"><textarea class="post-textarea" id="description" name="description"></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <div class="post-form" id="post-show">
+            <h2 class="">Post a Show</h2>
+            <br>
+            <table>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Show Name:</p></td>
+                    <td class="td-home-btn"><input type="text" class="btn" id="show-name" name="show-name"></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Artist:</p></td>
+                    <td class="td-home-btn">
+                        <select class="post-input" id="show-artist" name="show-artist">
+                            <option value="">--Select one--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Venue:</p></td>
+                    <td class="td-home-btn">
+                        <select class="post-input" id="show-venue" name="show-venue">
+                            <option value="">--Select one--</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Date:</p></td>
+                    <td class="td-home-btn"><input type="date" class="post-input" id="show-date" name="show-date"></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Time:</p></td>
+                    <td class="td-home-btn">
+                        <select class="post-input" id="show-time" name="show-time">
+                            <option value="">--Select time--</option>
+                            <option value="00:00">00.00</option>
+                            <option value="00:30">00.30</option>
+                            <option value="01:00">01.00</option>
+                            <option value="01:30">01.30</option>
+                            <option value="02:00">02.00</option>
+                            <option value="02:30">02.30</option>
+                            <option value="03:00">03.00</option>
+                            <option value="03:30">03.30</option>
+                            <option value="04:00">04.00</option>
+                            <option value="04:30">04.30</option>
+                            <option value="05:00">05.00</option>
+                            <option value="05:30">05.30</option>
+                            <option value="06:00">06.00</option>
+                            <option value="06:30">06.30</option>
+                            <option value="07:00">07.00</option>
+                            <option value="07:30">07.30</option>
+                            <option value="08:00">08.00</option>
+                            <option value="08:30">08.30</option>
+                            <option value="09:00">09.00</option>
+                            <option value="09:30">09.30</option>
+                            <option value="10:00">10.00</option>
+                            <option value="10:30">10.30</option>
+                            <option value="11:00">11.00</option>
+                            <option value="11:30">11.30</option>
+                        </select>
+                        <select class="post-input" id="am-pm" name="am-pm">
+                            <option value="A.M.">A.M.</option>
+                            <option value="P.M.">P.M.</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Entry Fee:</p></td>
+                    <td class="td-home-btn"><input type="number" class="post-input" id="entry-fee" name="entry-fee"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="homepage-content-right">
+            <img id="homeimage" src="https://media.istockphoto.com/photos/cheering-crowd-of-unrecognized-people-at-a-rock-music-concert-concert-picture-id1189205501?s=612x612" alt="Home">
+        </div>
+    </div>
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'venues/index.js' %}"></script>
+{% endblock %}

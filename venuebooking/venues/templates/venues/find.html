@@ -1,0 +1,71 @@
+{% extends "venues/layout.html" %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block body %}
+    <br>
+    <div class="flex-container">
+        <div class="post-form" id="post-venue">
+            <h2 class="">Post a Venue</h2>
+            <br>
+            <table>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Venue:</p></td>
+                    <td class="td-home-btn"><input type="text" class="post-input" id="venue-name" name="venue-name" /></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Address:</p></td>
+                    <td class="td-home-btn"><textarea class="post-textarea" id="address" name="address"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Website:</p></td>
+                    <td class="td-home-btn"><input type="text" class="post-input" id="website" name="website" /></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Contact No.:</p></td>
+                    <td class="td-home-btn"><input type="tel" class="post-input" id="telephone" name="telephone" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="post-form" id="post-artist">
+            <h2 class="">Post an Artist</h2>
+            <br>
+            <table>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Name:</p></td>
+                    <td class="td-home-btn"><input type="text" class="post-input" id="artist-name" name="artist-name" /></td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Genre:</p></td>
+                    <td class="td-home-btn">
+                        <input type="checkbox" name="genre[]" id="genre1" />
+                        <label for="genre1">Genre 1</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-home-btn"><p class="text1">Description:</p></td>
+                    <td class="td-home-btn"><textarea class="post-textarea" id="description" name="description"></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <div class="post-form" id="post-show">
+            <h2 class="">Shows</h2>
+            <br>
+            <table>
+                <tr>
+                    <td class="td-home-btn">
+                        <a href=""><p>Show 1</p></a>
+                    </td>
+                </tr>
+               
+            </table>
+        </div>
+        
+    </div>
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'venues/index.js' %}"></script>
+{% endblock %}

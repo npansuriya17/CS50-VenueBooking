@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="{% static 'venues/styles.css' %}">
+        {% block script %}{% endblock script %}
+    </head>
+    <body>
+        <div class="container-main">
+            <img id="homelogo" src="/venues/images/homelogo.jpg" alt="Home">
+            <input type="submit" class="btn-menu" id="venues" value="Venues" onclick="loadList('venues')"></input>
+            <input type="submit" class="btn-menu" id="artists" value="Artists" onclick="loadList('artists')"></input>
+            <input type="submit" class="btn-menu" id="shows" value="Shows" onclick="loadList('shows')"></input>
+            <br>
+            <br>
+            {% block body %}{% endblock body %}
+        </div>
+    </body>
+</html>
