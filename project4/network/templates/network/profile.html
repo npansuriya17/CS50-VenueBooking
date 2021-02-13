@@ -1,0 +1,85 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div id="div-allposts">
+    <table class="table-allposts">
+        <tr>
+            <td><h3>{{ p_user }}'s Profile</h3></td>
+            <td class="td-follower-class">
+                {% if user.is_authenticated and not isMyProfile %}
+                    <form id="follow" method="POST">{% csrf_token %}
+                    {% if isFollowed %}
+                        <button type="submit" class="btn-post" id="btn-unfollow" name="btn-unfollow" onclick="">Unfollow</button>
+                    {% else %}
+                        <button type="submit" class="btn-post" id="btn-follow" name="btn-follow" onclick="">Follow</button>
+                    {% endif %}
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    </h3><hr align="left" style="width: 75%;">
+    <table class="table-allposts">
+            {% csrf_token %}
+            <tr>
+                <td class="td-follower-class" id="td-follower1"><p id="p-followers">Followers</p></td>
+                <td id="td-follower2"><p>{{ followers }}</p></td>
+            </tr>
+            <tr>
+                <td class="td-follower-class" id="td-follower1"><p id="p-following">Following</p></td>
+                <td id="td-follower2"><p>{{ following }}</p></td>
+            </tr>
+        </form>
+    </table>
+    <table class="table-allposts" id="posts-table">
+        {% for post,liked,likes in content %}
+        <tr><td><br></td></tr>
+        <tr class="tr-posts" id="tr-allposts">
+            <td id="td-posts">
+                <form id="edit-post" method="POST">{% csrf_token %}
+                    {% if post_to_edit == post %}
+                        <input type="hidden" name="save-edited-post-id" value="{{ post.id }}">
+                        <textarea autofocus id="new-post-content" name="edit-post-content" rows="4">{{ post.content }}</textarea><br>
+                        <button type="submit" class="btn-post" id="btn-save-edited-post" name="btn-save-edited-post">Save Post</button>
+                    {% else %}
+                        <div id="div-name-edit">
+                            <input type="hidden" name="edit-post-id" value="{{ post.id }}">
+                            <span><p class="p-post-name"><a href="{% url 'profile' post.posted_by_user.username %}">{{ post.posted_by_user.username }}</a></p></span>
+                                {% if updated_post_id == post.id %}
+                                    <span><button type="submit" id="btn-edit-post" name="btn-edit-post" autofocus>Edit Post</button></span>
+                                {% else %}
+                                    <span><button type="submit" id="btn-edit-post" name="btn-edit-post">Edit Post</button></span>
+                                {% endif %}
+                        </div>
+                </form>
+                    <p class="p-post-content">{{ post.content }}</p>
+                    <p class="p-post-time">{{ post.posted_time }}</p>
+                    <div class="div-img-flex">
+                        {% if user.is_authenticated %}
+                            <form method="POST">{% csrf_token %}
+                                <input type="hidden" name="post-id" value="{{ post.id }}">
+                                {% if liked_post_id == post.id %}
+                                    {% if liked %}
+                                        <button type="submit" id="btn-liked" name="btn-unlike"><img class="img-like-btn" id="img-unlike" name="img-unlike" src="https://healthygirlfashion.files.wordpress.com/2016/09/poshmark-liked-button.jpg" autofocus></button>
+                                    {% else %}
+                                        <button type="submit" id="btn-liked" name="btn-like"><img class="img-like-btn" id="img-like" name="img-like" src="https://healthygirlfashion.files.wordpress.com/2016/09/poshmark-like-button.jpg" autofocus></button>
+                                    {% endif %}
+                                {% else %}
+                                    {% if liked %}
+                                        <button type="submit" id="btn-liked" name="btn-unlike"><img class="img-like-btn" id="img-unlike" name="img-unlike" src="https://healthygirlfashion.files.wordpress.com/2016/09/poshmark-liked-button.jpg"></button>
+                                    {% else %}
+                                        <button type="submit" id="btn-liked" name="btn-like"><img class="img-like-btn" id="img-like" name="img-like" src="https://healthygirlfashion.files.wordpress.com/2016/09/poshmark-like-button.jpg"></button>
+                                    {% endif %}
+                                {% endif %}
+                            </form>
+                        {% endif %}
+                            <img class="img-like-btn" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9e7kQ8rtx2XCRnZzaINKDHorF59r5ThnNJw&usqp=CAU">
+                            <p id="p-total-likes">{{ likes }}</p>
+                    </div>
+                {% endif %}
+            </td>            
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
