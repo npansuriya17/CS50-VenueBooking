@@ -23,7 +23,11 @@
         {% for post,liked,likes in content %}
         <tr><td><br></td></tr>
         <tr class="tr-posts" id="tr-allposts">
+        {% if liked_post_id == post.id %}
+            <td id="td-posts" autofocus>
+        {% else %}
             <td id="td-posts">
+        {% endif %}
                 <form id="edit-post" method="POST">{% csrf_token %}
                     {% if post_to_edit == post %}
                         <input type="hidden" name="save-edited-post-id" value="{{ post.id }}">
